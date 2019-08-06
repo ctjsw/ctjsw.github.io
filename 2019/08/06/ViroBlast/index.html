@@ -7,7 +7,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
-  <title>Pony</title>
+  <title>ViroBlast | Pony</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -15,17 +15,17 @@
     <meta name="keywords" content="Bioinformation">
   
 
-  <meta name="description" content="ViroBlast 利用云服务搭建blast服务 1234567891011121314151617#1 安装必要的软件sudo apt-get ncbi-blast+ apache2 libapache2-mod-php php php-gd#2 下载 viroblastwget http://indra.mullins.microbiol.washington.edu/viroblast/do">
+  <meta name="description" content="利用腾讯云服务搭建blast服务 1234567891011121314151617#1 安装必要的软件sudo apt-get ncbi-blast+ apache2 libapache2-mod-php php php-gd#2 下载 viroblastwget http://indra.mullins.microbiol.washington.edu/viroblast/download.p">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pony">
+<meta property="og:title" content="ViroBlast">
 <meta property="og:url" content="https://ctjsw.github.io/2019/08/06/ViroBlast/index.html">
 <meta property="og:site_name" content="Pony">
-<meta property="og:description" content="ViroBlast 利用云服务搭建blast服务 1234567891011121314151617#1 安装必要的软件sudo apt-get ncbi-blast+ apache2 libapache2-mod-php php php-gd#2 下载 viroblastwget http://indra.mullins.microbiol.washington.edu/viroblast/do">
+<meta property="og:description" content="利用腾讯云服务搭建blast服务 1234567891011121314151617#1 安装必要的软件sudo apt-get ncbi-blast+ apache2 libapache2-mod-php php php-gd#2 下载 viroblastwget http://indra.mullins.microbiol.washington.edu/viroblast/download.p">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-25T13:39:21.000Z">
+<meta property="og:updated_time" content="2019-08-06T14:37:52.236Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pony">
-<meta name="twitter:description" content="ViroBlast 利用云服务搭建blast服务 1234567891011121314151617#1 安装必要的软件sudo apt-get ncbi-blast+ apache2 libapache2-mod-php php php-gd#2 下载 viroblastwget http://indra.mullins.microbiol.washington.edu/viroblast/do">
+<meta name="twitter:title" content="ViroBlast">
+<meta name="twitter:description" content="利用腾讯云服务搭建blast服务 1234567891011121314151617#1 安装必要的软件sudo apt-get ncbi-blast+ apache2 libapache2-mod-php php php-gd#2 下载 viroblastwget http://indra.mullins.microbiol.washington.edu/viroblast/download.p">
 
   
 
@@ -203,7 +203,7 @@ ga('send', 'pageview');
 <div class="content content-post CENTER">
    <article id="post-ViroBlast" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">(no title)</h1>
+    <h1 class="post-title">ViroBlast</h1>
 
     <div class="article-meta">
       <span>
@@ -236,8 +236,7 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <p>ViroBlast</p>
-<p>利用云服务搭建blast服务</p>
+      <p>利用腾讯云服务搭建blast服务</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>1 安装必要的软件</span><br><span class="line">sudo apt-get ncbi-blast+ apache2 libapache2-mod-php php php-gd</span><br><span class="line"><span class="meta">#</span>2 下载 viroblast</span><br><span class="line">wget http://indra.mullins.microbiol.washington.edu/viroblast/download.php?ID=viroblast.tar.gz</span><br><span class="line"><span class="meta">#</span>3 解压后移动到apache www/html目录下</span><br><span class="line"><span class="meta">$</span> mv viroblast /var/www/html/</span><br><span class="line"><span class="meta">#</span>4 修改配置文件/var/www/html/viroblast/viroblast.ini</span><br><span class="line">blast+: /usr/bin</span><br><span class="line">blastn: test_na_db =&gt; Nucleotide test database</span><br><span class="line">blastp: test_aa_db =&gt; Protein test database #(, .* =&gt; Tair10 ##逗号分隔多个数据库，右为网页端展示的名称) </span><br><span class="line">blastx: test_aa_db =&gt; Protein test database</span><br><span class="line">tblastn: test_na_db =&gt; Nucleotide test database</span><br><span class="line">tblastx: test_na_db =&gt; Nucleotide test database</span><br><span class="line"><span class="meta">#</span>5 blastdb 默认在/var/www/html/viroblast/db目录下</span><br><span class="line"><span class="meta">$</span> makeblastdb -in *.fasta -out .* -dbtype prot/nucl</span><br><span class="line"><span class="meta">#</span>6 登录 ip/viroblast/viroblast.php 即可使用</span><br><span class="line">*ip*/viroblast/viroblast.php</span><br></pre></td></tr></table></figure>
 
 <p>使用Apache2 rewrite功能重定向主页</p>
