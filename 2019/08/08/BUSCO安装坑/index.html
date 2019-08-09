@@ -15,18 +15,18 @@
     <meta name="keywords" content="软件使用,">
   
 
-  <meta name="description" content="首先是没了解到conda的多环境功能：顺便补习下bioconda部署:    123456 conda config –add channels rconda config –add channels defaults # conda环境默认仅装了这一个channelconda config –add channels conda-forgeconda config –add channels b">
+  <meta name="description" content="首先是了解conda的多环境功能：顺便补习下bioconda部署: 123456conda config --add channels rconda config --add channels defaults # conda环境默认仅装了这一个channelconda config --add channelsconda-forgeconda config --add channels bioc">
 <meta name="keywords" content="软件使用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BUSCO安装遇到的坑">
 <meta property="og:url" content="https://ctjsw.github.io/2019/08/08/BUSCO安装坑/index.html">
 <meta property="og:site_name" content="Pony">
-<meta property="og:description" content="首先是没了解到conda的多环境功能：顺便补习下bioconda部署:    123456 conda config –add channels rconda config –add channels defaults # conda环境默认仅装了这一个channelconda config –add channels conda-forgeconda config –add channels b">
+<meta property="og:description" content="首先是了解conda的多环境功能：顺便补习下bioconda部署: 123456conda config --add channels rconda config --add channels defaults # conda环境默认仅装了这一个channelconda config --add channelsconda-forgeconda config --add channels bioc">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-09T07:01:35.906Z">
+<meta property="og:updated_time" content="2019-08-09T11:31:46.048Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BUSCO安装遇到的坑">
-<meta name="twitter:description" content="首先是没了解到conda的多环境功能：顺便补习下bioconda部署:    123456 conda config –add channels rconda config –add channels defaults # conda环境默认仅装了这一个channelconda config –add channels conda-forgeconda config –add channels b">
+<meta name="twitter:description" content="首先是了解conda的多环境功能：顺便补习下bioconda部署: 123456conda config --add channels rconda config --add channels defaults # conda环境默认仅装了这一个channelconda config --add channelsconda-forgeconda config --add channels bioc">
 
   
 
@@ -194,11 +194,6 @@ ga('send', 'pageview');
 </div>
 
 
-  <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#发表评论"><span class="toc-text">发表评论</span></a></li></ol>
-  </div>
-
 
 
 <div class="content content-post CENTER">
@@ -237,90 +232,32 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <p>首先是没了解到conda的多环境功能：顺便补习下bioconda部署:</p>
-<table>
-<thead>
-<tr>
-<th>123456</th>
-<th>conda config –add channels rconda config –add channels defaults # conda环境默认仅装了这一个channelconda config –add channels conda-forgeconda config –add channels biocondaconda config –remove channels ****conda list</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
+      <p>首先是了解conda的多环境功能：顺便补习下bioconda部署:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels rconda config --add channels defaults </span><br><span class="line"><span class="meta">#</span> conda环境默认仅装了这一个channel</span><br><span class="line">conda config --add channels</span><br><span class="line">conda-forgeconda config --add channels bioconda</span><br><span class="line">conda config --remove channels </span><br><span class="line">conda list</span><br></pre></td></tr></table></figure>
+
 <p>另外，conda还有upgrade和search比较常用。其它的可以直接在终端输入conda查看。</p>
 <p>##设置一个新环境</p>
-<table>
-<thead>
-<tr>
-<th>123</th>
-<th>conda info –envsconda create -c bioconda busco -n buscosource activate busco</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda info --envsconda create -c bioconda busco -n buscosource activate busco</span><br></pre></td></tr></table></figure>
+
 <p>除了以上简单的安装外，还可以建立工作空间将几个相应的软件装到一起，例如我想将几种比对的软件装在一个叫做aligners的环境下：</p>
-<table>
-<thead>
-<tr>
-<th>1</th>
-<th>conda create -n aligners bwa bowtie hisat2</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n aligners bwa bowtie hisat2</span><br></pre></td></tr></table></figure>
+
 <p>注：如果系统中已经安装了该软件，conda不会再进行安装</p>
 <p>这种分组安装的办法将软件安装在$HOME/miniconda2/envs/aligners/bin/目录下（其中aligners即conda create -n选项指定的环境名）</p>
 <p>用时需指定路径，例如想用aligners中的hisat2需要</p>
-<p><strong>$HOME/miniconda2/envs/aligner/bin/hisat2</strong></p>
-<p>如果想卸载某软件(例如刚才安装的star)，可以使用</p>
-<p><strong>conda uninstall star</strong></p>
-<p>或 <strong>conda remove star</strong></p>
-<p># 注意：conda不会卸载系统中原来安装的软件，它只会卸载~/miniconda2/bin/目录中的软件，所以可以放心使用</p>
-<p>#####################################################################</p>
-<p>本次安装BUSCO遇到的问题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/mnt/a/biosoft/minoconda/envs/busco/share/busco-3.0.2-7/config.ini.default</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">如果想卸载某软件(例如刚才安装的star)，可以使用</span><br><span class="line"></span><br><span class="line">```conda uninstall star</span><br></pre></td></tr></table></figure>
 
-<table>
-<thead>
-<tr>
-<th>123456789101112131415161718192021222324252627282930313233</th>
-<th>$$ source activate busco$ find /mnt/a/biosoft/miniconda/ennv -name config.ini.default $ cp  config.ini.default config.ini$ vim config.ini#################[tblastn]/mnt/a/biosoft/minoconda/envs/busco/bin/tblastn[makeblastdb]/mnt/a/biosoft/minoconda/envs/busco/bin/makeblastdb[augustus]/mnt/a/biosoft/minoconda/envs/busco/bin/augustus[etraining]/mnt/a/biosoft/minoconda/envs/busco/bin/etraining[gff2gbSmallDNA.pl]/mnt/a/biosoft/minoconda/envs/busco/bin/gff2gbSmallDNA.pl[new_species.pl]/mnt/a/biosoft/minoconda/envs/busco/bin/new_species.pl[optimize_augustus.pl]/mnt/a/biosoft/minoconda/envs/busco/bin/optimize_augustus.pl[hmmsearch]/mnt/a/biosoft/minoconda/envs/busco/bin/hmmsearch[Rscript]/mnt/a/biosoft/minoconda/envs/busco/bin/Rscript###################$ cd ~$ vim .bashrc ###################export PATH=”/path/to/AUGUSTUS/augustus-3.2.3/bin:$PATH”export PATH=”/path/to/AUGUSTUS/augustus-3.2.3/scripts:$PATH”export AUGUSTUS_CONFIG_PATH=”/path/to/AUGUSTUS/augustus-3.2.3/config/“###################$ source ~/.bashrc$ printenv  ###check the env</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
+<p>或<figure class="highlight plain"><figcaption><span>remove star```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">\# 注意：conda不会卸载系统中原来安装的软件，它只会卸载~/miniconda2/bin/目录中的软件，所以可以放心使用</span><br><span class="line"></span><br><span class="line">本次安装BUSCO遇到的问题</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">/mnt/a/biosoft/minoconda/envs/busco/share/busco-3.0.2-7/config.ini.default</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> source activate busco$ find /mnt/a/biosoft/miniconda/ennv -name config.ini.default </span><br><span class="line"><span class="meta">$</span> cp  config.ini.default config.ini</span><br><span class="line"><span class="meta">$</span> vim config.ini</span><br><span class="line"><span class="meta">#</span>################[tblastn]/mnt/a/biosoft/minoconda/envs/busco/bin/tblastn[makeblastdb]/mnt/a/biosoft/minoconda/envs/busco/bin/makeblastdb[augustus]/mnt/a/biosoft/minoconda/envs/busco/bin/augustus[etraining]/mnt/a/biosoft/minoconda/envs/busco/bin/etraining[gff2gbSmallDNA.pl]/mnt/a/biosoft/minoconda/envs/busco/bin/gff2gbSmallDNA.pl[new_species.pl]/mnt/a/biosoft/minoconda/envs/busco/bin/new_species.pl[optimize_augustus.pl]/mnt/a/biosoft/minoconda/envs/busco/bin/optimize_augustus.pl[hmmsearch]/mnt/a/biosoft/minoconda/envs/busco/bin/hmmsearch[Rscript]/mnt/a/biosoft/minoconda/envs/busco/bin/Rscript###################$ cd ~$ vim .bashrc ###################export PATH="/path/to/AUGUSTUS/augustus-3.2.3/bin:$PATH"export PATH="/path/to/AUGUSTUS/augustus-3.2.3/scripts:$PATH"export AUGUSTUS_CONFIG_PATH="/path/to/AUGUSTUS/augustus-3.2.3/config/"###################$ source ~/.bashrc$ printenv  </span><br><span class="line"><span class="meta">#</span>##check the env</span><br></pre></td></tr></table></figure>
+
 <p>运行时可能还存在链接库无法找寻以至于程序出错，解决方法就是将相对应或着接近的库拷贝或软链接到<code>~/miniconda3/env/busco/lib/</code>下。</p>
 <p>还需要下载<a href="https://link.jianshu.com/?t=http%3A%2F%2Fbusco.ezlab.org%2F" target="_blank" rel="noopener">http://busco.ezlab.org/</a> 物种数据集</p>
-<p>############################################################</p>
 <p>Usage：</p>
-<table>
-<thead>
-<tr>
-<th>123</th>
-<th>((busco) ctj@DESKTOP-8MPSFK0:~$ python /mnt/a/biosoft//minoconda/envs/busco/bin/run_BUSCO.py –inusage: python BUSCO.py -i [SEQUENCE_FILE] -l [LINEAGE] -o [OUTPUT_NAME] -m [MODE][OTHER OPTIONS]run_BUSCO.py: error: argument -i/–in: expected one argument</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>Example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(busco) ctj@DESKTOP-8MPSFK0:/mnt/a/biosoft$ python /mnt/a/biosoft//minoconda/envs/busco/bin/run_BUSCO.py -i /mnt/a/biosoft/GCF_000350225.1_ASM35022v2_genomic.fa -o result -l /mnt/a/biosoft/minoconda/envs/busco/lib/eukaryota_odb9 -m genome -f</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((busco) ctj@DESKTOP-8MPSFK0:~$ python /mnt/a/biosoft//minoconda/envs/busco/bin/run_BUSCO.py --inusage: python BUSCO.py -i [SEQUENCE_FILE] -l [LINEAGE] -o [OUTPUT_NAME] -m [MODE][OTHER OPTIONS]run_BUSCO.py: error: argument -i/--in: expected one argument</span><br></pre></td></tr></table></figure>
 
-<h3 id="发表评论"><a href="#发表评论" class="headerlink" title="发表评论"></a>发表评论</h3><p>电子邮件地</p>
+<p>Example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(busco) ctj@DESKTOP-8MPSFK0:/mnt/a/biosoft$ python /mnt/a/biosoft//minoconda/envs/busco/bin/run_BUSCO.py -i /mnt/a/biosoft/GCF_000350225.1_ASM35022v2_genomic.fa -o result -l /mnt/a/biosoft/minoconda/envs/busco/lib/eukaryota_odb9 -m genome -f</span><br></pre></td></tr></table></figure>
+
 
     
   </div>
